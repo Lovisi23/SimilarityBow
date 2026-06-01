@@ -18,7 +18,6 @@ similarity f1 f2 =
             , closeEnough v1 v2
             ]
 
-    -- Alteramos aqui: devolve apenas o m direto, sem tuplas e sem divisão
     in m
 
 closeEnough :: Int -> Int -> Bool
