@@ -2,10 +2,16 @@ module Main where
 
 import System.Environment
 import qualified Data.Map as Map
+import Data.List (sortBy)
 
 import Parser
 import Frequency
 import Similarity
+
+compareFreq :: (String, Int) -> (String, Int) -> Ordering
+compareFreq (w1, f1) (w2, f2)
+    | f1 /= f2  = compare f2 f1
+    | otherwise = compare w1 w2
 
 main :: IO ()
 main = do
@@ -26,8 +32,10 @@ main = do
             let freq1 = frequencies reserved tokens1
             let freq2 = frequencies reserved tokens2
 
-            mapM_ print
-                (Map.toList freq1)
+            let sortedFreq =
+                    sortBy compareFreq (Map.toList freq1)
+
+            mapM_ print sortedFreq
 
             putStrLn ""
 
@@ -35,4 +43,4 @@ main = do
 
         _ ->
             putStrLn
-            "Uso: ./program res.txt sep.txt code1.c code2.c"
+                "Uso: ./similarity.exe res.txt sep.txt c1.c c2.c"

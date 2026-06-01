@@ -1,0 +1,17 @@
+# executável
+similarity.exe
+similarity
+
+# arquivos do GHC
+*.hi
+*.o
+*.dyn_o
+*.dyn_hi
+
+# cache do stack/cabal 
+.stack-work/
+dist/
+
+# lixo do Windows
+Thumbs.db
+.DS_Store
