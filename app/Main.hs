@@ -34,13 +34,28 @@ main = do
 
             let sortedFreq =
                     sortBy compareFreq (Map.toList freq1)
+            
+            putStrLn ""
+
+            putStrLn "Frequências de palavras reservadas e tokens no código 1:"
+
+            putStrLn ""
 
             mapM_ print sortedFreq
 
             putStrLn ""
+            
+            let m = similarity freq1 freq2
+            
+            let total = fromIntegral (sum (Map.elems freq1))
+            
+            let indice = if total == 0 then 0 else m / total
 
-            print (similarity freq1 freq2)
+            putStrLn ("Valor de m: " ++ show m)
+            putStrLn ("Indice de similaridade: " ++ show indice)
 
-        _ ->
-            putStrLn
-                "Uso: ./similarity.exe res.txt sep.txt c1.c c2.c"
+        _ -> do
+            putStrLn ""
+            putStrLn "Erro: Quantidade incorreta de argumentos fornecida."
+            putStrLn "Por favor, forneca exatamente 4 arquivos de texto."
+            putStrLn ""

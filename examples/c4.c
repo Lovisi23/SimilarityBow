@@ -1,3 +1,3 @@
-int soma(int x, int y) {
-    return x + y;
+int soma(int a, int y) {
+    return a + y;
 }
